@@ -12,4 +12,3 @@ D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Supplier\bin\Debug\netcore
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Supplier\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Supplier\obj\Debug\netcoreapp3.0\RabbitMQ.Supplier.dll
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Supplier\obj\Debug\netcoreapp3.0\RabbitMQ.Supplier.pdb
-D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Supplier\obj\Debug\netcoreapp3.0\RabbitMQ.Supplier.csprojAssemblyReference.cache

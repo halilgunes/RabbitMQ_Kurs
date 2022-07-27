@@ -12,4 +12,3 @@ D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Consumers\bin\Debug\netcor
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Consumers\bin\Debug\netcoreapp3.0\System.Threading.Channels.dll
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Consumers\obj\Debug\netcoreapp3.0\RabbitMQ.Consumers.csproj.CopyComplete
 D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Consumers\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
-D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\RabbitMQ.Consumers\obj\Debug\netcoreapp3.0\RabbitMQ.Consumers.csprojAssemblyReference.cache

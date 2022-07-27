@@ -27,6 +27,7 @@ namespace RabbitMQ.Supplier
             
 
             Console.WriteLine("Mesaj gönderildi");
+            Console.ReadLine();
         }
     }
 }

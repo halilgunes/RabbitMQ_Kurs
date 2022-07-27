@@ -24,12 +24,13 @@ namespace RabbitMQ.Consumers
             {
                 var body = ea.Body.ToArray();
                 string message = Encoding.UTF8.GetString(body);
-
+                channel.BasicAck(ea.DeliveryTag, false);
                 Console.WriteLine($"Gelen mesaj : {message}");
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             };
 
             string consumerTag = channel.BasicConsume("halil_queue", false, consumer);
+            Console.ReadLine();
         }
     }
 }
