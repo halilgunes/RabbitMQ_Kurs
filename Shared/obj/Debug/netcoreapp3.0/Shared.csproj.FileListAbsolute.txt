@@ -1,0 +1,8 @@
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\bin\Debug\netcoreapp3.0\Shared.deps.json
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\bin\Debug\netcoreapp3.0\Shared.dll
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\bin\Debug\netcoreapp3.0\Shared.pdb
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\obj\Debug\netcoreapp3.0\Shared.csprojAssemblyReference.cache
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\obj\Debug\netcoreapp3.0\Shared.AssemblyInfoInputs.cache
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\obj\Debug\netcoreapp3.0\Shared.AssemblyInfo.cs
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\obj\Debug\netcoreapp3.0\Shared.dll
+D:\Calismalar\RabbitMQ_Training\RabbitMQ_App\Shared\obj\Debug\netcoreapp3.0\Shared.pdb
