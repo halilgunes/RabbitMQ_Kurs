@@ -40,16 +40,12 @@ namespace FileCreateWorkerService
             return base.StartAsync(cancellationToken);
         }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                var consumer = new AsyncEventingBasicConsumer(channel);
-                consumer.Received += Consumer_Received;
-                await Task.Delay(1000, stoppingToken);
-            }
-
+            var consumer = new AsyncEventingBasicConsumer(channel);
+            consumer.Received += Consumer_Received;
+            channel.BasicConsume(RabbitMQClientService.QueueName, false, consumer);
+            return Task.CompletedTask;
         }
 
         private async Task Consumer_Received(object sender, BasicDeliverEventArgs @event)
@@ -64,8 +60,8 @@ namespace FileCreateWorkerService
             workBook.SaveAs(ms);
 
             MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
-            multipartFormDataContent.Add(new ByteArrayContent(ms.ToArray()),"file",Guid.NewGuid().ToString()+".xlsx");
-            var baseUrl = "http://localhost:3483/api/files";
+            multipartFormDataContent.Add(new ByteArrayContent(ms.ToArray()),"file",Guid.NewGuid().ToString()+".xls");
+            var baseUrl = "https://localhost:44310/api/files";
 
             using (var httpClient = new HttpClient())
             {
@@ -76,7 +72,7 @@ namespace FileCreateWorkerService
                     channel.BasicAck(@event.DeliveryTag, false);
                 }
             }
-
+                 
         }
 
         /// <summary>
@@ -91,7 +87,7 @@ namespace FileCreateWorkerService
             using (IServiceScope scope = serviceProvider.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<AdventureWorks2017Context>();
-                products = context.Products.ToList();
+                products = context.Products.Take(10).ToList();
 
                 dt = new DataTable() { TableName = tableName };
                 dt.Columns.Add("ProductId",typeof(int));

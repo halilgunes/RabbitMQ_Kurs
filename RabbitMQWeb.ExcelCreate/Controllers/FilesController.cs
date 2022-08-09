@@ -21,14 +21,15 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
             appDataContext = context;
         }
 
-        public async Task<IActionResult> Upload(IFormFile file, string userId, int fileId)
+        [HttpPost]
+        public async Task<IActionResult> Upload(IFormFile file, int fileId)
         {
 
             if (file.Length <= 0) return BadRequest();
 
             var userFile = await appDataContext.UserFiles.FirstOrDefaultAsync(f => f.Id == fileId);
-            var filePath = file.FileName + Path.GetExtension(file.FileName);
-            var path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/files", filePath);
+            var filePath = file.FileName;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\\files", filePath);
 
             using FileStream stream = new FileStream(path, FileMode.Create);
 
