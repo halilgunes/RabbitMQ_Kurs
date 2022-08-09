@@ -3,6 +3,28 @@
     ViewData["Title"] = "Files";
 }
 @model IEnumerable<UserFile>
+
+
+@section Scripts{
+@*bu script Layout'un en altında yazan RenderSection("Scripts" kısmına render edilir.*@
+    <script>
+    $(document).ready(function(){
+
+        var hasStartingExcel = '@TempData["CreatingExcelFile"]';
+        if (hasStartingExcel) {
+            Swal.fire({//sweetalert
+                position: 'top-end',
+                icon: 'success',
+                title: 'Excel oluşturma işlemi başladı bitince haberdar edeceğiz.',
+                showConfirmButton: false,
+                timer:2500
+            });
+        }
+
+    });
+
+    </script>
+}
 <h1>Files</h1>
 <table class="table table-striped">
     <thead>

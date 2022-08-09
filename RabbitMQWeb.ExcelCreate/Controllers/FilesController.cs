@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using NPOI.SS.Formula.Functions;
+using RabbitMQWeb.ExcelCreate.Hubs;
 using RabbitMQWeb.ExcelCreate.Models;
 
 namespace RabbitMQWeb.ExcelCreate.Controllers
@@ -16,9 +18,11 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
     public class FilesController : ControllerBase
     {
         private readonly AppDataContext appDataContext;
-        public FilesController(AppDataContext context)
+        private readonly IHubContext<MyHub> hubContext;
+        public FilesController(AppDataContext context,IHubContext<MyHub> hubContext)
         {
             appDataContext = context;
+            this.hubContext = hubContext;
         }
 
         [HttpPost]
@@ -40,6 +44,9 @@ namespace RabbitMQWeb.ExcelCreate.Controllers
 
             await appDataContext.SaveChangesAsync();
             //SignalIR nofification kullanılacak burada.
+
+            //sadece ilgili kullanıcıya mesaj gönderiyor. clienta.
+            await hubContext.Clients.User(userFile.UserId).SendAsync("Completed File creation");
             return Ok();
         }
     }

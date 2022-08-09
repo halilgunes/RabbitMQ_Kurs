@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
+using RabbitMQWeb.ExcelCreate.Hubs;
 using RabbitMQWeb.ExcelCreate.Models;
 using RabbitMQWeb.ExcelCreate.Services;
 
@@ -56,6 +57,7 @@ namespace RabbitMQWeb.ExcelCreate
 
 
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -78,6 +80,8 @@ namespace RabbitMQWeb.ExcelCreate
             
             app.UseEndpoints(endpoints =>
             {
+                //bu endpoint üzerinden haberleþme olacak.
+                endpoints.MapHub<MyHub>("/MyHub");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
